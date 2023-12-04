@@ -2,6 +2,8 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.Collection;
@@ -15,12 +17,15 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Group root = new Group();
-        GameScene scene = new GameScene(root, 500, 300);
+        GameScene scene = new GameScene(root, 1000, 600);
         stage.setScene(scene);
         stage.show();
-        System.out.println("backgroundLeft X: " + scene.getBackgroundLeft().getImageView().getX() + ", Y: " + scene.getBackgroundLeft().getImageView().getY());
-        System.out.println("backgroundRight X: " + scene.getBackgroundRight().getImageView().getX() + ", Y: " + scene.getBackgroundRight().getImageView().getY());
-
-
+        Button button = new Button("Bouton!");
+               root.getChildren().addAll(button);
+                       button.setOnAction((e) ->{
+                           scene.retrieveCamera().move(50);
+                           scene.render();
+                           System.out.println(scene.retrieveCamera().toString());
+                       });
     }
 }
