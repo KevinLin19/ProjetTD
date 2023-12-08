@@ -1,6 +1,7 @@
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 abstract class AnimatedThing{
     double X;
@@ -10,9 +11,6 @@ abstract class AnimatedThing{
     ImageView imageView;
     int attitude;
     double index, frames, indexMax, sizeWindowX, sizeWindowY, offset;
-    //index sert à savoir on est à quel frames de l'animation
-    //frames le nombre de secondes entre chaque image
-    //offset est definie en fonction de dans quel attitude on est ?
 
     public AnimatedThing(String fileName, double x, double y, int attitude, int index, int frames, int indexMax, int sizeWindowX, int sizeWindowY, int offset) throws InterruptedException {
         X = x;
@@ -46,6 +44,7 @@ abstract class AnimatedThing{
 
     public void update(long time) {
         double temps = (double) (time/100000000)%10;
+        //System.out.println(temps);
         if(temps == 1 & temps0 == 1){
             ChangeViewPort();
             temps0 ++;
@@ -82,18 +81,5 @@ abstract class AnimatedThing{
             ChangeViewPort();
             temps0 =1;
         }
-
-        /*
-        double temps = (double) (time/1000000);
-        if(temps%5 == 0) {
-            if (index < indexMax) {
-                getImageView().setViewport(new Rectangle2D(85*index, 0, 80, 100));
-                index++;
-            } else {
-                index = 0;
-            }
-        }
-
-         */
     }
 }

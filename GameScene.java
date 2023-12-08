@@ -11,12 +11,12 @@ class GameScene extends Scene {
     private int NumberOfLives = 3;
     public GameScene(Group root, double width, double height) throws InterruptedException {
         super(root, width, height);
-        camera = new Camera(100, 100);
+        camera = new Camera(0, 0);
         backgroundLeft = new StaticThing("img/desert.png", width, height, -width/2, 0);
         root.getChildren().add(backgroundLeft.getImageView());
         backgroundRight = new StaticThing("img/desert.png", width, height, width/2, 0);
         root.getChildren().add(backgroundRight.getImageView());
-        hero = new Hero("img/heros.png",150,430,1,0,0.02,6,75,100,0);
+        hero = new Hero("img/heros.png",150,430,0,0,0.02,6,75,100,10);
         root.getChildren().add(hero.getImageView());
         AnimationTimer timer = new AnimationTimer()
         {public void handle(long time){
@@ -33,7 +33,7 @@ class GameScene extends Scene {
     }
 
     private static void update(long time) {
-        //System.out.println(time);
+        System.out.println(time);
     }
 
     public Camera retrieveCamera() {
